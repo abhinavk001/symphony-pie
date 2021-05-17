@@ -3,4 +3,7 @@ Audio visualizer built using python.
 
 ## Libraries and frameworks
  - Opencv
- - flask
+ - Django
+## Tools
+- ffmpeg
+- Docker
