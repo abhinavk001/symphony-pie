@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+    font-family: Raleway;
+}
+
+html {
+    background-color: #DFDFDF;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+   /* ------------navabar------------- */
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.brand-title {
+    font-size: 1rem;
+    margin: .5rem;
+    font-family: Pattaya;
+}
+.title{
+    text-align: center;
+    font-size: 2rem;
+}
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+    position: relative;
+   
+}
+.navbar-links li:last-child{
+    border-right: none ;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+.navbar-links ul li ul {
+    position: absolute;
+    right: 0;
+    background: #333;
+    display: block;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.navbar-links ul li:hover ul{
+    opacity: 1;
+    visibility: visible;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+
+
+.img-area{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-img{
+    padding: 40px 40px;
+}
+img:hover{
+    opacity: .5;
+    transition: .9s;
+}
+
