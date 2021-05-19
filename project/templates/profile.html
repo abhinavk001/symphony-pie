@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="title">
+    Welcome, {{ name }}!
+</h1>
+<h2 class="subtitle">
+    Upload your audio to visualise it
+</h2>
+<div class="control">
+    <form method="POST" enctype="multipart/form-data">
+        <input class="input is-primary" width="75%" type="file" name="file" /><br><br>
+        <center><button class="button is-block is-info e is-rounded">Submit</button></center>
+    </form>
+</div>
+{% endblock %}
