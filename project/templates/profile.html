@@ -1,4 +1,22 @@
 {% extends "base.html" %} {% block content %}
+<style>
+    .submit {
+        background-color: #ffdd57;
+    border: 2px solid #363636;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .submit:hover {
+    background-color: #363636;
+    color: #ffdd57;
+    transition: 0.3s;
+  }
+  .upload-button{
+      padding: 10px;
+      border-radius: 10px;
+  }
+</style>
 <h1 class="title">
     Welcome, {{ name }}!
 </h1>
@@ -8,11 +26,11 @@
 <div class="control">
     <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <fieldset class = "form-group">
+        <fieldset class = "form-group upload-button">
             <legend class = "border-bottom mb-4">Upload Audio</legend>
             <div class="form-group">
-                {{ form.audiofile.label() }}
-                {{ form.audiofile(class="form-control-file") }}
+                <!-- {{ form.audiofile.label() }} -->
+                {{ form.audiofile(class="upload-button form-control-file") }}
                 {% if form.audiofile.errors %}
                     {% for error in form.audiofile.errors %}
                         <span class="text-danger">{{ error }}</span></br>
@@ -21,7 +39,7 @@
             </div>
         </fieldset>
         <div class = "form-group">
-            {{ form.submit() }}
+            {{ form.submit(class="submit") }}
         </div>
     </form>
 </div>

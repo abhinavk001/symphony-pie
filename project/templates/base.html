@@ -16,7 +16,7 @@
     <section class="hero is-warning is-fullheight">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-brand">
-          <a class="navbar-item" href="#">
+          <a class="navbar-item" href="{{ url_for('main.index') }}">
             <i class="title">Symphony Pie</i>
           </a>
 
@@ -33,9 +33,16 @@
           </a>
         </div>
         <div id="navbarBasicExample" class="navbar-menu navbar-end">
-          <a href="{{ url_for('main.index') }}" class="navbar-item"> Home </a>
+          <a href="{{ url_for('main.dashboard') }}" class="navbar-item">
+            Dashboard
+          </a>
           {% if current_user.is_authenticated %}
-          <a href="#" class="navbar-item"> Profile </a>
+          <a href="{{ url_for('main.profile') }}" class="navbar-item">
+            Profile
+          </a>
+          <a href="{{ url_for('main.upload') }}" class="navbar-item"
+            >Upload audio</a
+          >
           {% endif %} {% if not current_user.is_authenticated %}
           <a href="{{ url_for('auth.login') }}" class="navbar-item"> Login </a>
           <a href="{{ url_for('auth.signup') }}" class="navbar-item">

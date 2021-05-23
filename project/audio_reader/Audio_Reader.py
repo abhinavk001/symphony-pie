@@ -3,12 +3,13 @@ import numpy as np
 import cv2 as cv
 import subprocess
 import os
-import project
+#from project.utils import storage
 
 class VideoGenerator():
-    def covertToVideo(filename):
+    def covertToVideo(file_path_name, file_name):
+        f_name, f_ext = os.path.splitext(file_name)
         #Loading file
-        time_series, sample_rate = librosa.load(filename)  
+        time_series, sample_rate = librosa.load(file_path_name)  
 
         # getting a matrix which contains amplitude values according to frequency and time indexes
         stft = np.abs(librosa.stft(time_series, hop_length=512, n_fft=2048*4))
@@ -30,7 +31,7 @@ class VideoGenerator():
         def get_decibel(target_time, freq):
             return spectrogram[int(freq * frequencies_index_ratio)][int(target_time * time_index_ratio)]
 
-        size = 720, 1280, 3
+        size = 480, 854, 3
 
         def draw_circle(frame, center):
             thickness = 1
@@ -42,8 +43,7 @@ class VideoGenerator():
             line_type = 8
             cv.line(frame, start, end, (200, 45, 0), thickness, line_type)
 
-        i=53
-        j=420
+        j=280
         frame_count=1
 
         """ frame = np.zeros(size, dtype=np.uint8)
@@ -52,12 +52,12 @@ class VideoGenerator():
         draw_line(frame, (i+20,j), (i+20, 720-(np.abs(get_decibel(times[0], frequencies[2]))).astype(np.uint8)))
         draw_line(frame, (40, 40), (40, 60))
         cv.imwrite("1.jpg", frame) """
-        for iter in range(len(times)-1):
-            i=53
+        for iter in range(0,len(times)-1, 2):
+            i=36
             frame = np.zeros(size, dtype=np.uint8)                #640x360
             for frequency in range(100, 8000, 100):
-                draw_line(frame, (i,j), (i, 500-((get_decibel(times[iter], frequency)*2)).astype(np.uint8)))
-                i=i+15
+                draw_line(frame, (i,j), (i, 370-((get_decibel(times[iter], frequency)*2)).astype(np.uint8)))
+                i=i+10
             cv.imwrite(f'./project/audio_reader/images/img_i001.{frame_count:05d}.jpg', frame)
             frame_count+=1
 
@@ -70,7 +70,7 @@ class VideoGenerator():
 
         img_input = r"./project/audio_reader/images/img_i001.%05d.jpg"
         video_output = "out.mp4"
-        framerate = 43
+        framerate = 21.55
         cmd = f'ffmpeg -framerate {framerate} -i {img_input} {video_output}'
         subprocess.check_output(cmd, shell=True)
 
@@ -81,8 +81,11 @@ class VideoGenerator():
             if item.endswith(".jpg"):
                 os.remove(os.path.join(dir_name, item))
 
-        cmd2 = f'ffmpeg -i out.mp4 -i {filename} -map 0:v -map 1:a -c:v copy -shortest output.mp4'
+        cmd2 = f'ffmpeg -i out.mp4 -i {file_path_name} -map 0:v -map 1:a -c:v copy -shortest {f_name}.mp4'
         subprocess.check_output(cmd2, shell=True)
 
         os.remove('out.mp4')
+        os.remove(file_path_name)
+        return f'{f_name}.mp4'
+        
 

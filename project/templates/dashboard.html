@@ -1,1 +1,47 @@
-<h1>wewq</h1>
+{% extends "base.html" %} {% block content %}
+<style>
+  a {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .dash-heading {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+</style>
+<div class="dash-heading">
+  <h1>Dashboard</h1>
+</div>
+<div class="dashboard">
+  {% for video in videos %}
+  <div class="card">
+    <a href="{{ get_from_firebase(video.filename) }}">
+      <img
+        src="../static/background.jpg"
+        height="70px"
+        width="200px"
+        alt="thumbnail"
+      />{{ video.audio_name }}</a
+    >
+  </div>
+  {% endfor %}
+</div>
+<p>
+  <a href="{{ url_for('main.upload') }}">Click here</a> to upload an audio and
+  Visualize it
+</p>
+{% endblock content %}
