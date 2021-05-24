@@ -14,7 +14,14 @@ def save_audio(form_audio):
     return f_name, audio_fn
 
 firebaseConfig = {
-        
+    'apiKey': environ.get('apiKey'),
+    'authDomain': environ.get('authDomain'),
+    'projectId': environ.get('projectId'),
+    'storageBucket': environ.get('storageBucket'),
+    'messagingSenderId': environ.get('messagingSenderId'),
+    'appId': environ.get('appId'),
+    'measurementId': environ.get('measurementId'),
+    'databaseURL': 'https://symphony-pie-default-rtdb.firebaseio.com/' 
     }
 
 """ def storage():
