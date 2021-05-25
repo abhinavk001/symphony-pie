@@ -22,7 +22,36 @@ BFH/recLw7Omp2xvIQ4L4/2021
 - Pyrebase4 - 4.4.3
 ## How to configure
 - Setup the env variables and add flaskapp in it
-- Add firebase API credentials
-## How to Run
-- Gitclone the repo
 - create docker-compose.yml 
+  ```
+  version: "3"
+
+  services:
+    app:
+        build: .
+        environment:
+            apiKey: 
+            authDomain:
+            projectId: 
+            storageBucket: 
+            messagingSenderId: 
+            appId: 
+            measurementId: 
+            databaseURL: 
+            #Enter your firebase credentials above
+            FLASK_APP: "project"
+            FLASK_ENV: "development"
+        volumes:
+            - "./:/app"
+        ports:
+            - "5000:5000"
+   ```
+- Add firebase API credentials
+  
+## How to Run
+- clone the repository
+- Terminal command
+  ```
+  docker-compose up --build
+  ```
+  
