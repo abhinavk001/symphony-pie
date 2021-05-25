@@ -1,6 +1,3 @@
-#audio files
-audio/
-
 #docker
 docker-compose.yml
 
