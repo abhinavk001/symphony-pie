@@ -13,7 +13,8 @@ BFH/recLw7Omp2xvIQ4L4/2021
 ## How it Works ?
 1. Step 1 - Create a user account and login 
 2. Step 2 - Upload the audio file from local machine
-3. Step 3 - After the convertion, video will be available in your dashboard and stored in firebase
+3. Step 3 - After the convertion, video will be available in your dashboard and stored in firebase<br>
+[Video URL](https://drive.google.com/file/d/1bix_jFuwZ1JzQuUQVsqGgj-R1b71ZQuj/view?usp=drivesdk)
 ## Libraries used
 - Flask - 2.0.0
 - librosa - 0.8.0
