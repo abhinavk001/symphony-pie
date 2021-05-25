@@ -46,12 +46,6 @@ class VideoGenerator():
         j=280
         frame_count=1
 
-        """ frame = np.zeros(size, dtype=np.uint8)
-        draw_line(frame, (i,j), (i, 720-(np.abs(get_decibel(times[0], frequencies[0]))).astype(np.uint8)))
-        draw_line(frame, (i+10,j), (i+10, 720-(np.abs(get_decibel(times[0], frequencies[1]))).astype(np.uint8)))
-        draw_line(frame, (i+20,j), (i+20, 720-(np.abs(get_decibel(times[0], frequencies[2]))).astype(np.uint8)))
-        draw_line(frame, (40, 40), (40, 60))
-        cv.imwrite("1.jpg", frame) """
         for iter in range(0,len(times)-1, 2):
             i=36
             frame = np.zeros(size, dtype=np.uint8)                #640x360
@@ -60,13 +54,6 @@ class VideoGenerator():
                 i=i+10
             cv.imwrite(f'./project/audio_reader/images/img_i001.{frame_count:05d}.jpg', frame)
             frame_count+=1
-
-        """ frame = np.zeros(size, dtype=np.uint8)                #640x360
-        for frequency in range(100, 8000, 100):
-            draw_line(frame, (i,j), (i, 500-((get_decibel(times[0], frequency)*2)).astype(np.uint8)))
-            i=i+15
-        cv.imwrite(f'images/img_p001.{frame_count:05d}.jpg', frame)
-        frame_count+=1 """
 
         img_input = r"./project/audio_reader/images/img_i001.%05d.jpg"
         video_output = "out.mp4"

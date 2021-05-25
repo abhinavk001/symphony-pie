@@ -32,7 +32,6 @@ def upload():
 @main.route('/load')
 @login_required
 def load():
-    render_template('loading.html')
     vid_file_name = VideoGenerator.covertToVideo('./project/audio_reader/audio/'+current_user.audio, current_user.audio)
     store_to_firebase(vid_file_name)
     os.remove(vid_file_name)
@@ -45,9 +44,5 @@ def dashboard():
     videos = Video.query.filter_by(author=user)
     return render_template('dashboard.html', videos=videos, user=user, get_from_firebase=get_from_firebase)
 
-@main.route('/profile', methods=['GET', 'POST'])
-@login_required
-def profile():
-    return "Hello"
 
 
