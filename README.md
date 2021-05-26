@@ -10,7 +10,7 @@ Symphony Pie is an audio visualizer built using Python. It’s a simple web app 
 ## Team Id
 BFH/recLw7Omp2xvIQ4L4/2021
 ## Link to product walkthrough
-[Symphony Pie](https://drive.google.com/file/d/1bix_jFuwZ1JzQuUQVsqGgj-R1b71ZQuj/view?usp=drivesdk)
+[Symphony Pie](https://youtu.be/RZtrHYB2dg8)
 ## How it Works ?
 1. Step 1 - Create a user account and login 
 2. Step 2 - Upload the audio file from local machine
